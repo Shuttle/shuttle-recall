@@ -21,6 +21,7 @@
     <!-- Custom styles -->
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
     <link href="{{ ASSET_PATH }}/css/jquery.tocify.css" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ ASSET_PATH }}/css/syntax.css" rel="stylesheet" type="text/css" media="all">
 	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,7 +41,9 @@
     <!-- atom & rss feed -->
     <link href="{{ site.baseurl }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <link href="{{ site.baseurl }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
-
+	<script>
+		var shuttle = { baseurl: '{{ site.baseurl }}' };
+	</script>
   </head>
 
   <body>
@@ -65,29 +68,14 @@
 				</li>
 				<li class='dropdown'>
 					<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-					Guides
+					Overview
 					<b class='caret'></b>
 					</a>
 					<ul class='dropdown-menu'>
 						<li>
-							<a href='{{ site.baseurl }}/getting-started'>Getting Started</a>
+							<a href='{{ site.baseurl }}/overview-concepts'>Concepts</a>
 						</li>
 					</ul>
-				</li>
-				<li class='dropdown'>
-					<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-					API
-					<b class='caret'></b>
-					</a>
-					<ul class='dropdown-menu'>
-						<li class='dropdown-header'>Core</li>
-							<li>
-								<a href='{{ site.baseurl }}/event-store'>Event Store</a>
-							</li>
-					</ul>
-				</li>
-				<li>
-					<a href='{{ site.baseurl }}/archive'>Archive</a>
 				</li>
 				{% assign pages_list = site.pages %}
 				{% assign group = 'navigation' %}

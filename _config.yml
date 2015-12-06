@@ -5,7 +5,8 @@ permalink: pretty
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 
 paginate: 10
-pygments: true
+gems: [jekyll-paginate]
+highlighter: pygments
 
 markdown: redcarpet
 
@@ -16,7 +17,7 @@ redcarpet:
 # so be sure to set them if your theme uses them.
 #
 title : shuttle-recall
-tagline: free open-source .net enterprise service bus
+tagline: event-sourcing mechanism
 author :
   name : Eben Roux
   email : me@ebenroux.co.za
@@ -62,7 +63,7 @@ JB :
   #   - Only the following values are falsy: ["", null, false]
   #   - When setting BASE_PATH it must be a valid url.
   #     This means always setting the protocol (http|https) or prefixing with "/"
-  BASE_PATH : http://shuttle.github.io/shuttle-recall
+  BASE_PATH : /shuttle-recall
 
   # By default, the asset_path is automatically defined relative to BASE_PATH plus the enabled theme.
   # ex: [BASE_PATH]/assets/themes/[THEME-NAME]
