@@ -13,7 +13,7 @@ markdown: kramdown
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : shuttle-recall
+title : Shuttle.Recall
 tagline: event-sourcing mechanism
 author :
   name : Eben Roux

@@ -1,7 +1,3 @@
----
-title: Concepts
-layout: guide
----
 # Event Sourcing
 
 For some background you can have a look at the following:
