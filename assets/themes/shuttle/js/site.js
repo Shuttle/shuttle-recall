@@ -51,7 +51,9 @@ $(function(){
 	if (hasTOC) {
 		$('#toc')
 			.tocify({
-				theme: 'bootstrap'
+				theme: 'bootstrap',
+				showAndHide: true,
+				showAndHideOnScroll: true
 			})
 			.data('toc-tocify');
 
