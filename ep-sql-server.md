@@ -55,3 +55,7 @@ Use can then call `ProjectionSection.Configuration()` to return the configuratio
 The `IDatabaseContextFactory` and `IDatabaseGateway` implementation follow the structures as defined in the [Shuttle.Core.Data](http://shuttle.github.io/shuttle-core/overview-data/) package.
 
 For the `IProjectionQueryFactory` you can simply specify `new ProjectionQueryFactory()`.
+
+## Database
+
+You would need to execute the `ProjectionCreate.sql` script against your projection database in order to create the structures required for the projection service to operate.
