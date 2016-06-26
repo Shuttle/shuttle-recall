@@ -1,5 +1,4 @@
-shuttle-recall
-==============
+# Shuttle.Recall
 
 Event Sourcing mechanism.
 
