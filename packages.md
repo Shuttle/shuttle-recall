@@ -21,12 +21,12 @@ title: Packages
 	<div class='col-sm-6 col-md-4'>
 		<div class='thumbnail'>
 			<div class='caption'>
-			<h3>Shuttle.Recall.SqlServer</h3>
-			<p>Sql Server implementation of the Shuttle.Recall interfaces.</p>
+			<h3>Shuttle.Recall.Sql</h3>
+			<p>Sql implementation of the Shuttle.Recall interfaces.</p>
 			<p>
-				<a href='http://www.nuget.org/packages/Shuttle.Recall.SqlServer' target='_blank' class='btn btn-primary' role='button'>NuGet</a>
-				<a href='https://github.com/Shuttle/Shuttle.Recall.SqlServer' target='_blank' class='btn btn-default' role='button'>GitHub</a>
-				<a href='https://github.com/Shuttle/Shuttle.Recall.SqlServer/issues' target='_blank' class='btn btn-default' role='button'>Issues</a>
+				<a href='http://www.nuget.org/packages/Shuttle.Recall.Sql' target='_blank' class='btn btn-primary' role='button'>NuGet</a>
+				<a href='https://github.com/Shuttle/Shuttle.Recall.Sql' target='_blank' class='btn btn-default' role='button'>GitHub</a>
+				<a href='https://github.com/Shuttle/Shuttle.Recall.Sql/issues' target='_blank' class='btn btn-default' role='button'>Issues</a>
 			</p>
 			</div>
 		</div>
