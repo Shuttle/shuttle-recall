@@ -15,20 +15,15 @@ tagline: event sourcing
 
 Start a new **Console Application** project called `RecallQuickstart` and select a Shuttle.Recall implementation from the [supported implementations]({{ site.baseurl }}/packages/):
 
-<div class="nuget-badge">
-    <p>
-        <code>Install-Package Shuttle.Recall.Sql.Storage</code>
-    </p>
-</div>
+```
+PM> Install-Package Shuttle.Recall.Sql.Storage
+```
 
 Now we'll need select one of the [supported containers](http://shuttle.github.io/shuttle-core/shuttle-core-container#supported):
 
-<div class="nuget-badge">
-    <p>
-        <code>Install-Package Shuttle.Core.Castle</code>
-    </p>
-</div>
-
+```
+PM> Install-Package Shuttle.Core.Castle</code>
+```
 Now we'll define the domain event that will represent a state change in the `Name` attribute:
 
 ``` c#
