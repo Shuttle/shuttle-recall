@@ -3,13 +3,8 @@ layout: default
 title: Shuttle.Recall documentation
 tagline: event sourcing
 ---
-<div class='card'>
-    <div class="card-header">
-        Shuttle.Reall
-    </div>
-    <div class="card-body">
-        <p>Provides an event sourcing mechanism that abstracts the storage of events.</p>
-    </div>
+<div class='display-4'>
+    An event sourcing/projection mechanism that abstracts the storage of events.
 </div>
 <br/>
 <div class="alert alert-success" role="alert">
