@@ -29,19 +29,19 @@ var eventStore = new EventStore(new DefaultSerializer(), new DatabaseGateway(), 
 
 using (databaseContextFactory.Create("eventStringConnectionStringName"))
 {
-	var stream = eventStore.Get(sampleAggregateId);
+    var stream = eventStore.Get(sampleAggregateId);
 
-	if (stream.IsEmpty)
-	{
-		return;
-	}
+    if (stream.IsEmpty)
+    {
+        return;
+    }
 
-	sampleAggregate = new SampleAggregate(sampleAggregateId;
-	stream.Apply(sampleAggregate);
+    sampleAggregate = new SampleAggregate(sampleAggregateId;
+    stream.Apply(sampleAggregate);
 
-	stream.AddEvent(sampleAggregate.CommandReturningEvent("Some Data"));
+    stream.AddEvent(sampleAggregate.CommandReturningEvent("Some Data"));
 
-	eventStore.SaveEventStream(stream);
+    eventStore.SaveEventStream(stream);
 }
 ~~~
 

@@ -19,9 +19,9 @@ eventStream.AddEvent(aggregate.Move(moveCommand));
 
 if (eventStream.ShouldSnapshot(100))
 {
-	eventStream.AddSnapshot(aggregate.State);
+    eventStream.AddSnapshot(aggregate.State);
 }
-	
+    
 store.SaveEventStream(eventStream);
 
 eventStream = store.Get(aggregate.Id);
@@ -96,20 +96,20 @@ Adds a new event to the stream.  This is any instance of any class.  Events will
 ~~~ c#
 public class ItemAdded
 {
-	public Guid ProductId { get; set; }
-	public string Description { get; set; }
-	public decimal Price { get; set; }
+    public Guid ProductId { get; set; }
+    public string Description { get; set; }
+    public decimal Price { get; set; }
 }
 
 var stream = new EventStream(Guid.NewGuid());
 
 var itemAdded = new ItemAdded
-		{
-			ProductId = Guid.NewGuid(),
-			Description = "SampleItem",
-			Price = 125.50
-		};
-				
+        {
+            ProductId = Guid.NewGuid(),
+            Description = "SampleItem",
+            Price = 125.50
+        };
+                
 stream.AddEvent(itemAdded);
 ~~~
 
@@ -186,7 +186,7 @@ Applies all the events in the stream against the given object by finding a metho
 ~~~ c#
 public void On(Sample.Events.v1.SomeEvent someEvent)
 {
-	_someData = someEvent.SomeData;
+    _someData = someEvent.SomeData;
 }
 ~~~
 

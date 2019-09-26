@@ -15,11 +15,11 @@ The `ProjectionService` is the Sql Server implementation of the `IProjectionServ
 
 ~~~ c#
 public ProjectionService(
-	ISerializer serializer, 
-	IProjectionConfiguration projectionConfiguration, 
-	IDatabaseContextFactory databaseContextFactory, 
-	IDatabaseGateway databaseGateway, 
-	IProjectionQueryFactory queryFactory)
+    ISerializer serializer, 
+    IProjectionConfiguration projectionConfiguration, 
+    IDatabaseContextFactory databaseContextFactory, 
+    IDatabaseGateway databaseGateway, 
+    IProjectionQueryFactory queryFactory)
 ~~~
 
 You can use the `DefaultSerializer` implementation for the `ISerializer` from the [Shuttle.Core.Infrastructure](http://shuttle.github.io/shuttle-core/overview-serializer/) package as a starting point.
@@ -28,29 +28,29 @@ The `IProjectionConfiguration` specifies the `ProviderName` and `ConnectionStrin
 
 ~~~ xml
 <configuration>
-	<configSections>
-		<sectionGroup name="shuttle">
-			<section 
-				name="projection" 
-				type="Shuttle.Recall.SqlServer.ProjectionSection, Shuttle.Recall.SqlServer" />
-		</sectionGroup>
-	</configSections>
+    <configSections>
+        <sectionGroup name="shuttle">
+            <section 
+                name="projection" 
+                type="Shuttle.Recall.SqlServer.ProjectionSection, Shuttle.Recall.SqlServer" />
+        </sectionGroup>
+    </configSections>
 
-	<shuttle>
-		<projection connectionStringName="EventStore" />
-	</shuttle>
+    <shuttle>
+        <projection connectionStringName="EventStore" />
+    </shuttle>
 
-	<connectionStrings>
-		<clear />
-		<add 
-			name="EventStore" 
-			connectionString="Data Source=.\sqlexpress;Initial Catalog=shuttle;Integrated Security=SSPI;" 
-			providerName="System.Data.SqlClient" />
-	</connectionStrings>
+    <connectionStrings>
+        <clear />
+        <add 
+            name="EventStore" 
+            connectionString="Data Source=.\sqlexpress;Initial Catalog=shuttle;Integrated Security=SSPI;" 
+            providerName="System.Data.SqlClient" />
+    </connectionStrings>
 </configuration>
 ~~~
 
-Use can then call `ProjectionSection.Configuration()` to return the configuration set up according to the application configuration files `ProjectionSection`.
+You can then call `ProjectionSection.Configuration()` to return the configuration set up according to the application configuration files `ProjectionSection`.
 
 The `IDatabaseContextFactory` and `IDatabaseGateway` implementation follow the structures as defined in the [Shuttle.Core.Data](http://shuttle.github.io/shuttle-core/overview-data/) package.
 

@@ -1,0 +1,31 @@
+{
+  "name": "shuttle-recall",
+  "version": "1.0.0",
+  "description": "Shuttle.Recall",
+  "scripts": {
+    "bundle": "webpack",
+    "host": "jekyll serve",
+    "open": "start http://127.0.0.1:4000"
+  },
+  "author": "Eben Roux",
+  "license": "ISC",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
+    "bootstrap": "^4.3.1",
+    "css-loader": "^3.2.0",
+    "expose-loader": "^0.7.5",
+    "file-loader": "^4.2.0",
+    "jquery": "^3.4.1",
+    "lunr": "^2.3.6",
+    "marked": "^0.6.2",
+    "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "popper.js": "^1.15.0",
+    "style-loader": "^1.0.0",
+    "terser-webpack-plugin": "^2.1.0",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {}
+}
