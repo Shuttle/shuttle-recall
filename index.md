@@ -3,7 +3,7 @@ layout: default
 title: Shuttle.Recall documentation
 tagline: event sourcing
 ---
-<div class='display-4'>
+<div class='overview display-4'>
     An event sourcing/projection mechanism that abstracts the storage of events.
 </div>
 <br/>
