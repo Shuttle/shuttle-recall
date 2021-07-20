@@ -29,7 +29,7 @@ In order to be able to handle any events in your projection you will need to add
 
 An event handler must implement the `IEventHandler` interface:
 
-~~~ c#
+``` c#
 namespace Shuttle.Recall
 {
     public interface IEventHandler<in T> where T : class
@@ -37,7 +37,7 @@ namespace Shuttle.Recall
         void ProcessEvent(IEventHandlerContext<T> context);
     }
 }
-~~~
+```
 
 ### IEventHandlerContext
 
@@ -49,25 +49,25 @@ The `IProjectionService` interface is implemented by a technology-specific packa
 
 ### GetSequenceNumber
 
-~~~ c#
+``` c#
 long GetSequenceNumber(string name);
-~~~
+```
 
 Returns the `SequenceNumber` position of the last event that was processed for the projection with the specified `name`.
 
 ### SetSequenceNumber
 
-~~~ c#
+``` c#
 void SetSequenceNumber(string name, long sequenceNumber);
-~~~
+```
 
 Sets the `SequenceNumber` position of the projection with the given 'name'.
 
 ### GetEvent
 
-~~~ c#
+``` c#
 ProjectionEvent GetEvent(long sequenceNumber);
 ProjectionEvent GetEvent(long sequenceNumber, IEnumerable<Type> eventTypes);
-~~~
+```
 
 Returns the `ProjectionEvent` for the given `sequenceNumber`.  When the `eventTypes` is specified the next `ProjectionEvent` equal to of after the given `sequenceNumber` is returned that has an event type in the given `eventTypes` collection.

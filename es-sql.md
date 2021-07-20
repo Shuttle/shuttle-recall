@@ -11,9 +11,9 @@ The `Shuttle.Recall.SqlServer` packages provides implementations of the `IEventS
 
 ### Constructor
 
-~~~ c#
+``` c#
 public EventStore(ISerializer serializer, IDatabaseGateway databaseGateway, IEventStoreQueryFactory queryFactory)
-~~~
+```
 
 Typically you would make use of the `DefaultSerializer` from the `Shuttle.Core.Infrastructure` package.  If you prefer serilizing to something other the Xml then you would need another implementation.  The `EventStoreQueryFactory` implements the `IEventStoreQueryFactory` and returns all the `IQuery` instnaces required to interact with the `EventStore` database.
 
@@ -23,7 +23,7 @@ You would need to execute the `EventStoreCreate.sql` script against your event s
 
 ### Usage
 
-~~~ c#
+``` c#
 var databaseContextFactory = DatabaseContextFactory.Default();
 var eventStore = new EventStore(new DefaultSerializer(), new DatabaseGateway(), new EventStoreQueryFactory());
 
@@ -43,6 +43,6 @@ using (databaseContextFactory.Create("eventStringConnectionStringName"))
 
     eventStore.SaveEventStream(stream);
 }
-~~~
+```
 
 <br/>

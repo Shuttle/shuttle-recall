@@ -1,6 +1,5 @@
 exclude: [.vscode,node_modules,bundle.js,package.json,package-lock.json]
 
-highlighter: Rouge
 github: https://github.com/Shuttle/shuttle-recall
 name: shuttle-recall
 title: Shuttle.Recall

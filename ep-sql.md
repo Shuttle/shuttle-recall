@@ -13,20 +13,20 @@ The `ProjectionService` is the Sql Server implementation of the `IProjectionServ
 
 ## Constructor
 
-~~~ c#
+``` c#
 public ProjectionService(
     ISerializer serializer, 
     IProjectionConfiguration projectionConfiguration, 
     IDatabaseContextFactory databaseContextFactory, 
     IDatabaseGateway databaseGateway, 
     IProjectionQueryFactory queryFactory)
-~~~
+```
 
 You can use the `DefaultSerializer` implementation for the `ISerializer` from the [Shuttle.Core.Infrastructure](http://shuttle.github.io/shuttle-core/overview-serializer/) package as a starting point.
 
 The `IProjectionConfiguration` specifies the `ProviderName` and `ConnectionString` to use to connect to the database.  These can be configured using the `ProjectionSection` configuration section in the application configuration file:
 
-~~~ xml
+``` xml
 <configuration>
     <configSections>
         <sectionGroup name="shuttle">
@@ -48,7 +48,7 @@ The `IProjectionConfiguration` specifies the `ProviderName` and `ConnectionStrin
             providerName="System.Data.SqlClient" />
     </connectionStrings>
 </configuration>
-~~~
+```
 
 You can then call `ProjectionSection.Configuration()` to return the configuration set up according to the application configuration files `ProjectionSection`.
 

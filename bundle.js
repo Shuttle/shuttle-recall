@@ -1,13 +1,12 @@
-import 'expose-loader?$!jQuery';
-import 'expose-loader?Popper!popper.js';
+import 'jquery';
+import 'popper.js';
 import 'bootstrap';
-import 'expose-loader?lunr!lunr';
-import 'expose-loader?marked!marked';
-import '@fortawesome/fontawesome-free/js/all.js';
-import './_assets/site.js';
-import './_assets/bootstrap-toc.js';
-import 'bootstrap/dist/css/bootstrap.css';
-import './_assets/bootstrap-toc.css';
-import './_assets/site.css';
-import './_assets/syntax.css';
-import '@fortawesome/fontawesome-free/css/all.css';
+import 'lunr';
+import site from './_assets/site';
+import './_assets/bootstrap-toc';
+import '@fortawesome/fontawesome-free/js/all';
+
+window.applyTheme = site.applyTheme;
+window.handleCopyClick = site.handleCopyClick;
+window.performSearch = site.performSearch;
+window.toggleTheme = site.toggleTheme;

@@ -9,7 +9,7 @@ An `EventStream` contains events for a given `Guid` identifier and is kept outsi
 
 Your domain object should only be concerned about handling the relevant commands issued to it and returning one or more events from those methods.  These will then be added to your `EventStream` before being persisted using an `IEventStore` implementation.
 
-~~~ c#
+``` c#
 IEventStore store = new EventStore();
 
 var aggregate = new Aggregate(Guid.NewGuid());
@@ -33,7 +33,7 @@ store.Remove(aggregate.Id);
 eventStream = store.Get(aggregate.Id);
 
 Assert.IsTrue(eventStream.IsEmpty);
-~~~
+```
 
 # EventStream
 
@@ -45,55 +45,55 @@ As you can imagine, over time an `EventStream` may become quite large.  A `Snaps
 
 ### Constructor
 
-~~~ c#
+``` c#
 public EventStream(Guid id)
 public EventStream(Guid id, int version, IEnumerable<Event> events, Event snapshot)
-~~~
+```
 
 Creates a new `EventStream` instance wityh the given properties.
 
 ### Properties
 
-~~~ c#
+``` c#
 public Guid Id { get; private set; }
 public int Version { get; private set; }
 public Event Snapshot { get; private set; }
 public bool Removed { get; private set; }
-~~~
+```
 
 ### Remove
 
-~~~ c#
+``` c#
 public void Remove()
-~~~
+```
 
 This will set the `Removed` property to `true`.  When the `EventStream` is saved using an `IEventStore` implementation it is the responsibility of the event store to remove all the events associated with the `Id`.
 
 ### IsEmpty
 
-~~~ c#
+``` c#
 public bool IsEmpty
-~~~
+```
 
 Returns `true` if there are no events in the stream; else `false`.
 
 ### CommitVersion
 
-~~~ c#
+``` c#
 public void CommitVersion()
-~~~
+```
 
 Makes the initial version of the stream the current version.
 
 ### AddEvent
 
-~~~ c#
+``` c#
 public void AddEvent(object data)
-~~~
+```
 
 Adds a new event to the stream.  This is any instance of any class.  Events will be defined by your domain:
 
-~~~ c#
+``` c#
 public class ItemAdded
 {
     public Guid ProductId { get; set; }
@@ -111,31 +111,31 @@ var itemAdded = new ItemAdded
         };
                 
 stream.AddEvent(itemAdded);
-~~~
+```
 
 It will be up to the event store implementation to serialize the event data and persist it.
 
 ### AddSnapshot
 
-~~~ c#
+``` c#
 public void AddSnapshot(object data)
-~~~
+```
 
 Similar to the `AddEvent` method, the `AddSnapshot` method is used to add an object that represents the complete state of the aggregate at any point in time.  It is essentially handled in the same way an event is.  When a snapshot is available it is loaded first and then all events following the snapshot would be loaded.  It is therefore important that your aggregate state is adequately represented by the snapshot object.
 
 ### ShouldSnapshot
 
-~~~ c#
+``` c#
 public bool ShouldSnapshot(int snapshotEventCount)
-~~~
+```
 
 Returns `true` if there are at least the `snapshotEventCount` number of events in the stream; else `false`.  Once there are enough events in the stream a snapshot can be made.
 
 ### AttemptSnapshot
 
-~~~ c#
+``` c#
 public bool AttemptSnapshot(int snapshotEventCount)
-~~~
+```
 
 This method works in conjunction with the `Apply` method.  When an object instance is provided to the `Apply` method Recall will check whether the object implements the `ICanSnapshot` interface.  If it does it means that the object can return a snapshot from the implement `GetSnapshotEvent` method.
 
@@ -143,74 +143,74 @@ The `AttemptSnaphot` will add a snapshot and return `true` if a snapshot could b
 
 ### CanSnapshot
 
-~~~ c#
+``` c#
 public bool CanSnapshot { get; }
-~~~
+```
 
 Returns `true` if the object supplied to the `Apply` method implements the `ICanSnapshot` interface.
 
 ### EventsAfter
 
-~~~ c#
+``` c#
 public IEnumerable<Event> EventsAfter(Event @event)
 public IEnumerable<Event> EventsAfter(int version)
-~~~
+```
 
 Returns all the events after the given `version` or the `Version` of the given `@event`.
 
 ### NewEvents
 
-~~~ c#
+``` c#
 public IEnumerable<Event> NewEvents()
-~~~
+```
 
 Returns all the events added that have a version number higher than the initial stream version number.
 
 ### PastEvents
 
-~~~ c#
+``` c#
 public IEnumerable<Event> PastEvents()
-~~~
+```
 
 Returns all events before, or equal to, the initial version of the stream.
 
 ### Apply
 
-~~~ c#
+``` c#
 public void Apply(object instance)
 public void Apply(object instance, string eventHandlingMethodName)
-~~~
+```
 
 Applies all the events in the stream against the given object by finding a method with the `eventHandlingMethodName`.  The default name used is `On`.  For each event type you would then need to have a `public` method with the relevant name that takes an instance of the event:
 
-~~~ c#
+``` c#
 public void On(Sample.Events.v1.SomeEvent someEvent)
 {
     _someData = someEvent.SomeData;
 }
-~~~
+```
 
 ### HasSnapshot
 
-~~~ c#
+``` c#
 public bool HasSnapshot { get; }
-~~~
+```
 
 Returns `true` if the stream contains a snapshot; else `false`.
 
 ### ConcurrencyInvariant
 
-~~~ c#
+``` c#
 public void ConcurrencyInvariant(int expectedVersion)
-~~~
+```
 
 If the event stream's version is not at the `expectedVersion` an `EventStreamConcurrencyException` is thrown.
 
 ### EmptyInvariant
 
-~~~ c#
+``` c#
 public static void EmptyInvariant(this EventStream stream)
-~~~
+```
 
 If the stream is empty an `EventStreamEmptyException` is thrown.
 
@@ -220,33 +220,33 @@ An `IEventStore` implementation should be able to persis and retireve an `EventS
 
 ### Get
 
-~~~ c#
+``` c#
 EventStream Get(Guid id);
-~~~
+```
 
 Returns a populated `EventStream` with any available snapshot applied.
 
 ### GetRaw
 
-~~~ c#
+``` c#
 EventStream GetRaw(Guid id);
-~~~
+```
 
 Returns a populated `EventStream` that contains all events from version 0.  No snapshot is applied.
 
 ### Remove
 
-~~~ c#
+``` c#
 void Remove(Guid id);
-~~~
+```
 
 All events that belong to the given `id` are removed.
 
 ### SaveEventStream
 
-~~~ c#
+``` c#
 void SaveEventStream(EventStream eventStream);
-~~~
+```
 
 Persists the given `EventStream`.  If it contains a snapshot the snapshot is also saved.
 
@@ -260,34 +260,34 @@ A key could be something such as `order-number:ord-001/2016` or even `customer-o
 
 ### Contains
 
-~~~ c#
+``` c#
 bool Contains(string key);
-~~~
+```
 
 Returns `true` if the given `key` has an associated aggregate identifier.
 
 ### Get
 
-~~~ c#
+``` c#
 Guid? Get(string key);
-~~~
+```
 
 Returns the `Guid` associated with the given key; else `null`.
 
 ### Remove
 
-~~~ c#
+``` c#
 void Remove(string key);
 void Remove(Guid id);
-~~~
+```
 
 When specifying the `key` the assocation with the identifier will be removed.  When specifying the `id` all keys associated with the given `id` will be removed.
 
 ### Add
 
-~~~ c#
+``` c#
 void Add(Guid id, string key);
-~~~
+```
 
 Createds an association between the `id` and the `key`.
 
@@ -297,16 +297,16 @@ You wouldn't typically interact directly with an `ITypeStore` implementation.  E
 
 ### Get
 
-~~~ c#
+``` c#
 Guid Get(Type type);
-~~~
+```
 
 Returns the `Guid` identifier for the given `type`.
 
 ### Add
 
-~~~ c#
+``` c#
 Guid Add(Type type);
-~~~
+```
 
 Adds a new `type` to the store and returns the `Guid` identifier assigned to it.

@@ -1,0 +1,42 @@
+I"N<h1 id="sql-server">Sql Server</h1>
+
+<p>The <code class="language-plaintext highlighter-rouge">Shuttle.Recall.SqlServer</code> packages provides implementations of the <code class="language-plaintext highlighter-rouge">IEventStore</code> and <code class="language-plaintext highlighter-rouge">IKeyStore</code> and makes use of the <code class="language-plaintext highlighter-rouge">Shuttle.Core.Data</code>[<a href="http://shuttle.github.io/shuttle-core/overview-data/" target="_blank">^</a>] components as well as the <code class="language-plaintext highlighter-rouge">ISerializer</code> from the <code class="language-plaintext highlighter-rouge">Shuttle.Core.Infrastructure</code>[<a href="http://shuttle.github.io/shuttle-core/overview-serializer/" target="_blank">^</a>] component.</p>
+
+<h2 id="eventstore">EventStore</h2>
+
+<h3 id="constructor">Constructor</h3>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="nf">EventStore</span><span class="p">(</span><span class="n">ISerializer</span> <span class="n">serializer</span><span class="p">,</span> <span class="n">IDatabaseGateway</span> <span class="n">databaseGateway</span><span class="p">,</span> <span class="n">IEventStoreQueryFactory</span> <span class="n">queryFactory</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Typically you would make use of the <code class="language-plaintext highlighter-rouge">DefaultSerializer</code> from the <code class="language-plaintext highlighter-rouge">Shuttle.Core.Infrastructure</code> package.  If you prefer serilizing to something other the Xml then you would need another implementation.  The <code class="language-plaintext highlighter-rouge">EventStoreQueryFactory</code> implements the <code class="language-plaintext highlighter-rouge">IEventStoreQueryFactory</code> and returns all the <code class="language-plaintext highlighter-rouge">IQuery</code> instnaces required to interact with the <code class="language-plaintext highlighter-rouge">EventStore</code> database.</p>
+
+<h3 id="database">Database</h3>
+
+<p>You would need to execute the <code class="language-plaintext highlighter-rouge">EventStoreCreate.sql</code> script against your event store database in order to create the structures required for the event store to operate.</p>
+
+<h3 id="usage">Usage</h3>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">databaseContextFactory</span> <span class="p">=</span> <span class="n">DatabaseContextFactory</span><span class="p">.</span><span class="nf">Default</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">eventStore</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">EventStore</span><span class="p">(</span><span class="k">new</span> <span class="nf">DefaultSerializer</span><span class="p">(),</span> <span class="k">new</span> <span class="nf">DatabaseGateway</span><span class="p">(),</span> <span class="k">new</span> <span class="nf">EventStoreQueryFactory</span><span class="p">());</span>
+
+<span class="k">using</span> <span class="p">(</span><span class="n">databaseContextFactory</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"eventStringConnectionStringName"</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">stream</span> <span class="p">=</span> <span class="n">eventStore</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="n">sampleAggregateId</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">stream</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">sampleAggregate</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SampleAggregate</span><span class="p">(</span><span class="n">sampleAggregateId</span><span class="p">;</span>
+    <span class="n">stream</span><span class="p">.</span><span class="nf">Apply</span><span class="p">(</span><span class="n">sampleAggregate</span><span class="p">);</span>
+
+    <span class="n">stream</span><span class="p">.</span><span class="nf">AddEvent</span><span class="p">(</span><span class="n">sampleAggregate</span><span class="p">.</span><span class="nf">CommandReturningEvent</span><span class="p">(</span><span class="s">"Some Data"</span><span class="p">));</span>
+
+    <span class="n">eventStore</span><span class="p">.</span><span class="nf">SaveEventStream</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+:ET
