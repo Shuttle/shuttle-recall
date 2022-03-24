@@ -1,7 +1,0 @@
-exclude: [.vscode,node_modules,bundle.js,package.json,package-lock.json]
-
-github: https://github.com/Shuttle/shuttle-recall
-name: shuttle-recall
-title: Shuttle.Recall
-email: me@ebenroux.com
-author: Eben Roux
