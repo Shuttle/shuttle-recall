@@ -10,24 +10,36 @@ A Sql Server implementation of the `Shuttle.Recall` event sourcing mechanism.
 
 ``` c#
 // use any of the supported DI containers
-var container = new WindsorComponentContainer(new WindsorContainer());
+var container = new NinjectComponentContainer(new StandardKernel());
 
-EventStore.Register(container);
+// This registers the event store dependencies provided by Shuttle.Recall 
+// - also registers event handlers in referenced assemblies
+container.RegisterEventStore();
 
-// register event handlers for event processing along with any other dependencies
-container.Register<MyHandler, MyHandler>();
+// This registers the sql server implementations provided by Shuttle.Recall.Sql.Storage, for instance
+container.RegisterEventStoreStorage();
+
+// This registers the sql server implementations provided by Shuttle.Recall.Sql.EventProcessing, for instance
+container.RegisterEventProcessing();
+
+// The following is important to remember as it connects the event processing module to the pipeline factory
+container.Resolve<EventProcessingModule>();
+
 container.Register<IMyQueryFactory, MyQueryFactory>();
 container.Register<IMyQuery, MyQuery>();
 
-EventStoreConfigurator.Configure(container);
-
-var processor = EventProcessor.Create(container);
+var processor = container.Resolve<IEventProcessor>();
 
 using (container.Resolve<IDatabaseContextFactory>().Create("ProjectionConnectionName"))
 {
+    // Adds the relevant projection to the processor which keeps track of the projection position
     processor.AddProjection("ProjectionName");
 
+    // Attaches the given event handler implementation to the projection, by name
     resolver.AddEventHandler<BowlingHandler>("ProjectionName");
+
+    // A short-hand format for the above is as follows:
+    // resolver.AddEventHandler<BowlingHandler>(processor.AddProjection("ProjectionName"));
 }
 
 processor.Start();
@@ -57,11 +69,11 @@ processor.Dispose();
 		<clear />
 		<add 
 			name="EventStore" 
-			connectionString="Data Source=.\sqlexpress;Initial Catalog=EventStoreDatabase;Integrated Security=SSPI;" 
+			connectionString="Data Source=.;Initial Catalog=EventStoreDatabase;Integrated Security=SSPI;" 
 			providerName="System.Data.SqlClient" />
 		<add 
 			name="EventProjection" 
-			connectionString="Data Source=.\sqlexpress;Initial Catalog=EventProjectionDatabase;Integrated Security=SSPI;" 
+			connectionString="Data Source=.;Initial Catalog=EventProjectionDatabase;Integrated Security=SSPI;" 
 			providerName="System.Data.SqlClient" />
 	</connectionStrings>
 </configuration>
@@ -74,4 +86,3 @@ The `IDatabaseContextFactory` and `IDatabaseGateway` implementation follow the s
 The required components may be registered by calling `ComponentRegistryExtensions.RegisterEventProcessing(IComponentRegistry)`.
 
 In order for the event processing module to attach to the `IPipelineFactory` you would need to resolve it using `IComponentResolver.Resolve<EventProcessingModule>()`.
-

@@ -43,8 +43,8 @@ As you can imagine, over time an `EventStream` may become quite large.  A `Snaps
 ### Constructor
 
 ``` c#
-public EventStream(Guid id)
-public EventStream(Guid id, int version, IEnumerable<Event> events, Event snapshot)
+public EventStream(Guid id);
+public EventStream(Guid id, int version, IEnumerable<Event> events, Event snapshot);
 ```
 
 Creates a new `EventStream` instance wityh the given properties.
@@ -134,7 +134,7 @@ Returns `true` if there are at least the `snapshotEventCount` number of events i
 public bool AttemptSnapshot(int snapshotEventCount)
 ```
 
-This method works in conjunction with the `Apply` method.  When an object instance is provided to the `Apply` method Recall will check whether the object implements the `ICanSnapshot` interface.  If it does it means that the object can return a snapshot from the implement `GetSnapshotEvent` method.
+This method works in conjunction with the `Apply` method.  When an object instance is provided to the `Apply` method Recall will check whether the object implements the `ICanSnapshot` interface.  If it does it means that the object can return a snapshot from the implemented `GetSnapshotEvent` method.
 
 The `AttemptSnaphot` will add a snapshot and return `true` if a snapshot could be added; else no snapshot will be added and `false` is returned.
 
@@ -149,8 +149,8 @@ Returns `true` if the object supplied to the `Apply` method implements the `ICan
 ### EventsAfter
 
 ``` c#
-public IEnumerable<Event> EventsAfter(Event @event)
-public IEnumerable<Event> EventsAfter(int version)
+public IEnumerable<Event> EventsAfter(Event @event);
+public IEnumerable<Event> EventsAfter(int version);
 ```
 
 Returns all the events after the given `version` or the `Version` of the given `@event`.
@@ -174,8 +174,8 @@ Returns all events before, or equal to, the initial version of the stream.
 ### Apply
 
 ``` c#
-public void Apply(object instance)
-public void Apply(object instance, string eventHandlingMethodName)
+public void Apply(object instance);
+public void Apply(object instance, string eventHandlingMethodName);
 ```
 
 Applies all the events in the stream against the given object by finding a method with the `eventHandlingMethodName`.  The default name used is `On`.  For each event type you would then need to have a `public` method with the relevant name that takes an instance of the event:
@@ -246,47 +246,6 @@ void SaveEventStream(EventStream eventStream);
 ```
 
 Persists the given `EventStream`.  If it contains a snapshot the snapshot is also saved.
-
-## IKeyStore
-
-You are bound to run into situations where you have a business or other key that is required to be unique.  Given that the `IEventStore` makes use of only surrogate keys the `IKeyStore` is used to create a unique list of keys associated with a given aggregate identifier.
-
-Since the keys used in the key store have to be unique you should ensure that they contain enough information to be unique and have the intended meaning.
-
-A key could be something such as `order-number:ord-001/2016` or even `customer-onboarding:id-number=0000005555089`.
-
-### Contains
-
-``` c#
-bool Contains(string key);
-```
-
-Returns `true` if the given `key` has an associated aggregate identifier.
-
-### Get
-
-``` c#
-Guid? Get(string key);
-```
-
-Returns the `Guid` associated with the given key; else `null`.
-
-### Remove
-
-``` c#
-void Remove(string key);
-void Remove(Guid id);
-```
-
-When specifying the `key` the assocation with the identifier will be removed.  When specifying the `id` all keys associated with the given `id` will be removed.
-
-### Add
-
-``` c#
-void Add(Guid id, string key);
-```
-
-Createds an association between the `id` and the `key`.
 
 ## ITypeStore
 

@@ -90,6 +90,11 @@ module.exports = (async () => {
             
             nav: [
                 {
+                    text: 'Getting started',
+                    activeMatch: `^/getting-started`,
+                    link: '/getting-started'
+                },
+                {
                     text: 'Events',
                     activeMatch: `^/events/`,
                     link: '/events/overview'
