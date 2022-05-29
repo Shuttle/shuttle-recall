@@ -1,5 +1,6 @@
 <script setup>
-import { VTIconShuttle } from 'shuttle-theme'
+import { VTIconShuttle } from 'shuttle-theme';
+import { VTIconDiscord } from 'shuttle-theme';
 </script>
 <template>
     <section id="hero">
