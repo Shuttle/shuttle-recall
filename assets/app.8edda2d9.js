@@ -5324,7 +5324,7 @@ function normalizeContainer(container) {
   }
   return container;
 }
-var serializedSiteData = '{"lang":"en-US","title":"Shuttle.Recall","description":"Shuttle.Recall Documentation","base":"/shuttle-recall/","head":[],"themeConfig":{"socialLinks":[{"icon":"github","link":"https://github.com/Shuttle/shuttle-recall"}],"footer":{"copyright":"Copyright \xA9 2013-2022 Eben Roux"},"nav":[{"text":"Events","activeMatch":"^/events/","link":"/events/overview"},{"text":"Projections","activeMatch":"^/projections/","link":"/projections/overview"}],"sidebar":{"/events/":[{"text":"Events","items":[{"text":"Overview","link":"/events/overview"}]},{"text":"Implementations","items":[{"text":"SQL","link":"/events/sql"}]}],"/projections/":[{"text":"Projections","items":[{"text":"Overview","link":"/projections/overview"}]},{"text":"Implementations","items":[{"text":"SQL","link":"/projections/sql"}]}]}},"locales":{},"langs":{},"scrollOffset":90}';
+var serializedSiteData = '{"lang":"en-US","title":"Shuttle.Recall","description":"Shuttle.Recall Documentation","base":"/shuttle-recall/","head":[],"themeConfig":{"socialLinks":[{"icon":"github","link":"https://github.com/Shuttle/shuttle-recall"}],"footer":{"copyright":"Copyright \xA9 2013-2022 Eben Roux"},"nav":[{"text":"Getting started","activeMatch":"^/getting-started","link":"/getting-started"},{"text":"Events","activeMatch":"^/events/","link":"/events/overview"},{"text":"Projections","activeMatch":"^/projections/","link":"/projections/overview"}],"sidebar":{"/events/":[{"text":"Events","items":[{"text":"Overview","link":"/events/overview"}]},{"text":"Implementations","items":[{"text":"SQL","link":"/events/sql"}]}],"/projections/":[{"text":"Projections","items":[{"text":"Overview","link":"/projections/overview"}]},{"text":"Implementations","items":[{"text":"SQL","link":"/projections/sql"}]}]}},"locales":{},"langs":{},"scrollOffset":90}';
 const EXTERNAL_URL_RE = /^https?:/i;
 const inBrowser$1 = typeof window !== "undefined";
 function findMatchRoot(route, roots) {
@@ -6575,7 +6575,7 @@ const _hoisted_5$6 = /* @__PURE__ */ createBaseVNode("span", { class: "DocSearch
 const _sfc_main$w = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const { theme } = useData();
-    const VPAlgoliaSearchBox = defineAsyncComponent(() => import("./chunks/VPAlgoliaSearchBox.083d2d64.js"));
+    const VPAlgoliaSearchBox = defineAsyncComponent(() => import("./chunks/VPAlgoliaSearchBox.bb926551.js"));
     const loaded = ref(false);
     const metaKey = ref();
     onMounted(() => {
@@ -8253,4 +8253,4 @@ if (inBrowser$1) {
     app.mount("#app");
   });
 }
-export { Fragment as F, VTIconShuttle as V, _export_sfc as _, createStaticVNode as a, createBaseVNode as b, createElementBlock as c, createApp, createVNode as d, defineComponent as e, useData as f, useRoute as g, useRouter as h, onMounted as i, openBlock as o, unref as u };
+export { Fragment as F, VTIconShuttle as V, _export_sfc as _, createStaticVNode as a, createBaseVNode as b, createElementBlock as c, createApp, createVNode as d, VTIconDiscord as e, createTextVNode as f, defineComponent as g, useData as h, useRoute as i, useRouter as j, onMounted as k, openBlock as o, unref as u };
