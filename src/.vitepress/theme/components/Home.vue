@@ -1,11 +1,6 @@
-<script setup>
-import { VTIconShuttle } from 'shuttle-theme';
-import { VTIconDiscord } from 'shuttle-theme';
-</script>
 <template>
     <section id="hero">
-        <VTIconShuttle class="logo" />
-        <h1 class="tagline">Shuttle.Recall</h1>
+        <h1 class="tagline">.Net Event Sourcing</h1>
         <p class="description">
             An event sourcing/projection mechanism that abstracts the storage of events.
         </p>
@@ -17,13 +12,6 @@ import { VTIconDiscord } from 'shuttle-theme';
                     <path
                         d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
                 </svg>
-            </a>
-        </p>
-        <p>
-            <a href="https://discord.gg/Fjg5mZP9ey" target="_blank">
-                <div class="discord-link">
-                    <VTIconDiscord class="discord-logo" />Join our Discord channel
-                </div>
             </a>
         </p>
     </section>

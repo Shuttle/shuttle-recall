@@ -80,8 +80,8 @@ module.exports = (async () => {
 
             socialLinks: [
                 { icon: 'github', link: 'https://github.com/Shuttle/shuttle-recall' },
+                { icon: 'discord', link: 'https://discord.gg/Fjg5mZP9ey' }
                 // { icon: 'twitter', link: '' },
-                // { icon: 'discord', link: '' }
             ],
 
             footer: {

@@ -6,20 +6,26 @@ PM> Install-Package Shuttle.Recall.Sql.Storage
 
 A Sql Server implementation of the `Shuttle.Recall` event sourcing `EventStore`.
 
-# Registration
+## Configuration
 
-The required components may be registered by calling `ComponentRegistryExtensions.RegisterEventStoreStorage(IComponentRegistry)`.
-
-## Event Store
-
-``` c#
-// use any of the supported DI containers
-var container = new WindsorComponentContainer(new WindsorContainer());
-
-container.RegisterEventStoreStorage();
-
-var eventStore = container.Resolve<IEventStore>();
+```c#
+services.AddSqlEventStorage();
 ```
+
+## Database
+
+In order to create the relevant database structures execute the relevant `EventStoreCreate.sql` script:
+
+```
+%userprofile%\.nuget\packages\shuttle.recall.sql.storage\{version}\scripts\{provider}\EventStoreCreate.sql
+```
+
+## Supported providers
+
+- `Microsoft.Data.SqlClient`
+- `System.Data.SqlClient`
+
+If you'd like support for another SQL-based provider please feel free to give it a bash and send a pull request if you *do* go this route.  You are welcome to create an issue and assistance will be provided where possible.
 
 ## IKeyStore
 
@@ -73,7 +79,7 @@ void Add(Guid id, string key);
 Creates an association between the `id` and the `key`.
 
 ---
-### Rekey
+### Add
 
 ``` c#
 void Rekey(string key, string rekey);

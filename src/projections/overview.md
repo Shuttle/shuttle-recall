@@ -10,21 +10,28 @@ Each one of these processing streams is called a **projection**.  Any single pro
 
 An `EventProcessor` instance is used to manage all the projections.  `EventProjection` instances may be added to the `EventProcessor` and each runs on its own thread.  In contrast to normal message processing there is no **poison** queue and no retries.
 
-## EventProjection
+## Projection
 
-An `EventProjection` has a name and represents a specific set of output data that you are interested in.  Each projection is a logical queue that has a current position within the event source message data.  All event sources messages should have a global sequence number that is used as a *cursor* of sorts.
+A `Projection` has a name and represents a specific set of output data that you are interested in.  Each projection is a logical queue that has a current position within the event stream.  All event sources messages should have a global sequence number that is used as a *cursor* of sorts.
 
 When you need to rebuild your read model for whatever reason you can simply delete the read model, reset the projection's position back to zero (or delete it), and re-run the projection.
 
 ### AddEventHandler
 
-In order to be able to handle any events in your projection you will need to add event handlers using the `AddEventHandler` method.
+In order to be able to handle any events in your projection you will need to add event handlers using the `AddEventHandler` method using the `EventStoreBuilder`:
+
+```c#
+services.AddEventStore(builder =>
+{
+    builder.AddEventHandler<ProjectionNameHandler>("ProjectionName");
+});
+```
 
 ## IEventHandler
 
 An event handler must implement the `IEventHandler` interface:
 
-``` c#
+```c#
 namespace Shuttle.Recall
 {
     public interface IEventHandler<in T> where T : class
@@ -36,15 +43,15 @@ namespace Shuttle.Recall
 
 ### IEventHandlerContext
 
-The event handler context provides The full `ProjectionEvent`, the actual deserialized `DomainEvent` containing the original data that was added to the `EventStream`, and the `ActiveState` that you can interrogate to determine if the processing is still active.
+The event handler context provides the full `EventEnvelope` and `PrimitiveEvent`, the actual deserialized domain `Event` containing the original data that was added to the `EventStream`, and the `CancellationToken` that you can interrogate to determine if the processing is still active.
 
-## IProjectionService
+## IProjectionRepository
 
-The `IProjectionService` interface is implemented by a technology-specific package.  The `Shuttle.Recall.SqlServer` package provides a Sql Server based implementation of the `IProjectionService`.
+The `IProjectionRepository` interface is implemented by a technology-specific package.  The `Shuttle.Recall.Sql.EventProcessing` package provides a Sql Server based implementation of the `IProjectionRepository`.
 
 ### GetSequenceNumber
 
-``` c#
+```c#
 long GetSequenceNumber(string name);
 ```
 
@@ -52,17 +59,24 @@ Returns the `SequenceNumber` position of the last event that was processed for t
 
 ### SetSequenceNumber
 
-``` c#
+```c#
 void SetSequenceNumber(string name, long sequenceNumber);
 ```
 
 Sets the `SequenceNumber` position of the projection with the given 'name'.
 
-### GetEvent
+### Find
 
-``` c#
-ProjectionEvent GetEvent(long sequenceNumber);
-ProjectionEvent GetEvent(long sequenceNumber, IEnumerable<Type> eventTypes);
+```c#
+Projection Find(string name);
 ```
 
-Returns the `ProjectionEvent` for the given `sequenceNumber`.  When the `eventTypes` is specified the next `ProjectionEvent` equal to of after the given `sequenceNumber` is returned that has an event type in the given `eventTypes` collection.
+Returns the `Projection` for the given `name`.
+
+### Save
+
+```c#
+void Save(Projection projection);
+```
+
+Persists the current `projection` data.
