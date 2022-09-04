@@ -5,7 +5,7 @@ const _hoisted_1 = /* @__PURE__ */ createStaticVNode("", 2);
 function _sfc_render(_ctx, _cache) {
   return _hoisted_1;
 }
-var Home = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__scopeId", "data-v-2bf7cc66"]]);
+var Home = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__scopeId", "data-v-3b82a803"]]);
 const __pageData = '{"title":"Home","description":"","frontmatter":{"page":true,"title":"Home"},"headers":[],"relativePath":"index.md"}';
 const __default__ = {};
 const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
