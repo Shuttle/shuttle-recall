@@ -26,8 +26,6 @@
         "@types/node": "^18.7.15"
     },
     "dependencies": {
-        "@vueuse/core": "^9.2.0",
-        "normalize.css": "^8.0.1",
         "shuttle-theme": "^1.1.2",
         "vitepress": "^1.0.0-alpha.13"
     }
