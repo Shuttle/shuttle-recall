@@ -44,7 +44,7 @@ const projections = [
 ];
 
 module.exports = (async () => {
-    const base = await getBase();
+    const base = await getBase({ base: '/shuttle-recall' });
 
     return {
         ...base,

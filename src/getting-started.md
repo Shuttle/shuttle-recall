@@ -1,3 +1,7 @@
+---
+aside: false
+---
+
 # Getting Started
 
 This guide demonstrates using Shuttle.Recall with a Sql Server implementation.
