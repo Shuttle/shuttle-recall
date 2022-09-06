@@ -6677,19 +6677,19 @@ const _hoisted_2$g = { class: "text" };
 const _sfc_main$x = /* @__PURE__ */ defineComponent({
   __name: "VPNavBarTitle",
   setup(__props) {
-    const { config } = useConfig();
+    const { site } = useData();
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("a", _hoisted_1$n, [
         renderSlot(_ctx.$slots, "navbar-title", {}, () => [
           createVNode(VTIconShuttle, { class: "logo" }),
-          createBaseVNode("span", _hoisted_2$g, toDisplayString(unref(config).title || "Shuttle"), 1)
+          createBaseVNode("span", _hoisted_2$g, toDisplayString(unref(site).title || "Shuttle"), 1)
         ], true)
       ]);
     };
   }
 });
-const VPNavBarTitle_vue_vue_type_style_index_0_scoped_dd1aabc2_lang = "";
-const VPNavBarTitle = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-dd1aabc2"]]);
+const VPNavBarTitle_vue_vue_type_style_index_0_scoped_a5d3b6b4_lang = "";
+const VPNavBarTitle = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-a5d3b6b4"]]);
 const style = "";
 const _hoisted_1$m = {
   key: 0,
@@ -6725,7 +6725,7 @@ const _sfc_main$w = /* @__PURE__ */ defineComponent({
     }));
     const { config } = useConfig();
     const VPAlgoliaSearchBox = defineAsyncComponent(
-      () => __vitePreload(() => import("./chunks/VPAlgoliaSearchBox.5a544443.js"), true ? [] : void 0)
+      () => __vitePreload(() => import("./chunks/VPAlgoliaSearchBox.5c37c579.js"), true ? [] : void 0)
     );
     const loaded = ref(false);
     const metaKey = ref(`'Meta'`);

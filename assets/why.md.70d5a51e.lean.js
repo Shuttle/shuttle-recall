@@ -1,4 +1,4 @@
-import { _ as _export_sfc, o as openBlock, c as createElementBlock, a as createStaticVNode } from "./app.be267ea5.js";
+import { _ as _export_sfc, o as openBlock, c as createElementBlock, a as createStaticVNode } from "./app.0ac7c232.js";
 const __pageData = JSON.parse('{"title":"Why Event Sourcing?","description":"","frontmatter":{},"headers":[{"level":2,"title":"Overview","slug":"overview","link":"#overview","children":[]},{"level":2,"title":"CQRS","slug":"cqrs","link":"#cqrs","children":[]},{"level":2,"title":"Resources","slug":"resources","link":"#resources","children":[]}],"relativePath":"why.md"}');
 const _sfc_main = { name: "why.md" };
 const _hoisted_1 = /* @__PURE__ */ createStaticVNode("", 11);

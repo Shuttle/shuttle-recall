@@ -1879,25 +1879,25 @@ html.dark {
   color-scheme: dark;
 }
 
-.VPNavBarTitle[data-v-dd1aabc2] {
+.VPNavBarTitle[data-v-a5d3b6b4] {
   display: flex;
   align-items: center;
   padding-top: 1px;
   height: var(--vt-nav-height);
   transition: opacity 0.25s;
 }
-.VPNavBarTitle[data-v-dd1aabc2]:hover {
+.VPNavBarTitle[data-v-a5d3b6b4]:hover {
   opacity: 0.6;
 }
-.logo[data-v-dd1aabc2] {
+.logo[data-v-a5d3b6b4] {
   position: relative;
   width: 2em;
   height: 2em;
 }
-.logo + .text[data-v-dd1aabc2] {
+.logo + .text[data-v-a5d3b6b4] {
   padding-left: 8px;
 }
-.text[data-v-dd1aabc2] {
+.text[data-v-a5d3b6b4] {
   font-size: 16px;
   font-weight: 500;
 }
