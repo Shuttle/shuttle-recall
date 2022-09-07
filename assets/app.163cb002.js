@@ -5475,7 +5475,7 @@ const _export_sfc = (sfc, props) => {
 };
 const scriptRel = "modulepreload";
 const assetsURL = function(dep) {
-  return "/shuttle-recall/" + dep;
+  return "/" + dep;
 };
 const seen = {};
 const __vitePreload = function preload(baseModule, deps, importerUrl) {
@@ -6032,7 +6032,7 @@ const _sfc_main$E = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const siteData = JSON.parse('{"lang":"en-US","title":"Shuttle.Recall","description":"Shuttle.Recall Documentation","base":"/shuttle-recall/","head":[],"appearance":true,"themeConfig":{"socialLinks":[{"icon":"github","link":"https://github.com/Shuttle/shuttle-recall"},{"icon":"discord","link":"https://discord.gg/Fjg5mZP9ey"}],"footer":{"copyright":"Copyright \xA9 2013-2022 Eben Roux"},"nav":[{"text":"Getting started","activeMatch":"^/getting-started","link":"/getting-started"},{"text":"Events","activeMatch":"^/events/","link":"/events/overview"},{"text":"Projections","activeMatch":"^/projections/","link":"/projections/overview"}],"sidebar":{"/events/":[{"text":"Events","items":[{"text":"Overview","link":"/events/overview"}]},{"text":"Implementations","items":[{"text":"SQL","link":"/events/sql"}]}],"/projections/":[{"text":"Projections","items":[{"text":"Overview","link":"/projections/overview"}]},{"text":"Implementations","items":[{"text":"SQL","link":"/projections/sql"}]}]}},"locales":{},"langs":{},"scrollOffset":90,"cleanUrls":"disabled"}');
+const siteData = JSON.parse('{"lang":"en-US","title":"Shuttle.Recall","description":"Shuttle.Recall Documentation","base":"/","head":[],"appearance":true,"themeConfig":{"socialLinks":[{"icon":"github","link":"https://github.com/Shuttle/shuttle-recall"},{"icon":"discord","link":"https://discord.gg/Fjg5mZP9ey"}],"footer":{"copyright":"Copyright \xA9 2013-2022 Eben Roux"},"nav":[{"text":"Getting started","activeMatch":"^/getting-started","link":"/getting-started"},{"text":"Events","activeMatch":"^/events/","link":"/events/overview"},{"text":"Projections","activeMatch":"^/projections/","link":"/projections/overview"}],"sidebar":{"/events/":[{"text":"Events","items":[{"text":"Overview","link":"/events/overview"}]},{"text":"Implementations","items":[{"text":"SQL","link":"/events/sql"}]}],"/projections/":[{"text":"Projections","items":[{"text":"Overview","link":"/projections/overview"}]},{"text":"Implementations","items":[{"text":"SQL","link":"/projections/sql"}]}]}},"locales":{},"langs":{},"scrollOffset":90,"cleanUrls":"disabled"}');
 const EXTERNAL_URL_RE = /^[a-z]+:/i;
 const inBrowser$1 = typeof window !== "undefined";
 const notFoundPageData = {
@@ -6141,7 +6141,7 @@ function pathToFile(path) {
   }
   {
     if (inBrowser$1) {
-      const base = "/shuttle-recall/";
+      const base = "/";
       pagePath = (pagePath.slice(base.length).replace(/\//g, "_") || "index") + ".md";
       const pageHash = __VP_HASH_MAP__[pagePath.toLowerCase()];
       pagePath = `${base}assets/${pagePath}.${pageHash}.js`;
@@ -6725,7 +6725,7 @@ const _sfc_main$w = /* @__PURE__ */ defineComponent({
     }));
     const { config } = useConfig();
     const VPAlgoliaSearchBox = defineAsyncComponent(
-      () => __vitePreload(() => import("./chunks/VPAlgoliaSearchBox.5c37c579.js"), true ? [] : void 0)
+      () => __vitePreload(() => import("./chunks/VPAlgoliaSearchBox.4dbc6af2.js"), true ? [] : void 0)
     );
     const loaded = ref(false);
     const metaKey = ref(`'Meta'`);
