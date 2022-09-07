@@ -46,7 +46,7 @@
                 </div>
             </div>
         </section>
-    </div>>
+    </div>
 </template>
 
 <style scoped>
