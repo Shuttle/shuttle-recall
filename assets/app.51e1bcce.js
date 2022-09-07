@@ -6348,7 +6348,7 @@ function normalizeLink(url) {
   if (isExternal(url)) {
     return url;
   }
-  const { pathname, search, hash } = new URL(url, "http://vuejs.org");
+  const { pathname, search, hash } = new URL(url, "http://origin");
   return withBase(
     pathname.endsWith("/") || pathname.endsWith(".html") ? url : `${pathname.replace(/(\.md)?$/, ".html")}${search}${hash}`
   );
@@ -6364,11 +6364,11 @@ function isActive(currentPath, matchPath, asRegex = false) {
   if (matchPath === void 0) {
     return false;
   }
-  currentPath = normalize(`/${currentPath}`);
+  currentPath = normalizeLink(normalize(`/${currentPath}`));
   if (asRegex) {
     return new RegExp(matchPath).test(currentPath);
   } else {
-    if (normalize(matchPath) !== currentPath) {
+    if (matchPath !== currentPath) {
       return false;
     }
     const hashMatch = matchPath.match(hashRE);
@@ -6725,7 +6725,7 @@ const _sfc_main$w = /* @__PURE__ */ defineComponent({
     }));
     const { config } = useConfig();
     const VPAlgoliaSearchBox = defineAsyncComponent(
-      () => __vitePreload(() => import("./chunks/VPAlgoliaSearchBox.5c37c579.js"), true ? [] : void 0)
+      () => __vitePreload(() => import("./chunks/VPAlgoliaSearchBox.6970c9e2.js"), true ? [] : void 0)
     );
     const loaded = ref(false);
     const metaKey = ref(`'Meta'`);
@@ -8034,7 +8034,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
         unref(links).prev ? (openBlock(), createElementBlock("a", {
           key: 0,
           class: "prev-link",
-          href: unref(normalizeLink)(unref(links).prev.link)
+          href: unref(links).prev.link
         }, [
           createBaseVNode("span", _hoisted_3$2, [
             createVNode(unref(VTIconChevronLeft), { class: "vt-link-icon" }),
@@ -8045,7 +8045,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
         unref(links).next ? (openBlock(), createElementBlock("a", {
           key: 1,
           class: "next-link",
-          href: unref(normalizeLink)(unref(links).next.link)
+          href: unref(links).next.link
         }, [
           createBaseVNode("span", _hoisted_6, [
             createTextVNode(toDisplayString((_d = (_c = unref(config).i18n) == null ? void 0 : _c.next) != null ? _d : "Next") + " ", 1),
@@ -8057,8 +8057,8 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const VPContentDocFooter_vue_vue_type_style_index_0_scoped_f83d48aa_lang = "";
-const VPContentDocFooter = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-f83d48aa"]]);
+const VPContentDocFooter_vue_vue_type_style_index_0_scoped_33519960_lang = "";
+const VPContentDocFooter = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-33519960"]]);
 const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "VPCarbonAds",
   setup(__props) {

@@ -2628,35 +2628,35 @@ html.dark {
   position: relative;
 }
 
-.VPContentDocFooter[data-v-f83d48aa] {
+.VPContentDocFooter[data-v-33519960] {
   border-top: 1px solid var(--vt-c-divider-light);
   padding-top: 1rem;
   display: flex;
   justify-content: space-between;
 }
-a[data-v-f83d48aa] {
+a[data-v-33519960] {
   display: inline-block;
   font-weight: 500;
   font-size: 16px;
   max-width: 48%;
 }
-.desc[data-v-f83d48aa] {
+.desc[data-v-33519960] {
   font-size: 11px;
   color: var(--vt-c-text-2);
   display: block;
 }
-.title[data-v-f83d48aa] {
+.title[data-v-33519960] {
   color: var(--vt-c-brand);
   transition: color 0.25s;
 }
-a:hover .title[data-v-f83d48aa] {
+a:hover .title[data-v-33519960] {
   color: var(--vt-c-brand-highlight);
 }
-.next-link[data-v-f83d48aa] {
+.next-link[data-v-33519960] {
   margin-left: auto;
   text-align: right;
 }
-.vt-link-icon[data-v-f83d48aa] {
+.vt-link-icon[data-v-33519960] {
   margin: -2px 0 0;
   vertical-align: middle;
 }
