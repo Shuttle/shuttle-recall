@@ -63,7 +63,8 @@ module.exports = (async () => {
 
         head: [
             ...base.head,
-            ['link', { rel: "shortcut icon", href: "/shuttle-recall/favicon.ico" }]
+            ['link', { rel: "shortcut icon", href: "/shuttle-recall/favicon.ico" }],
+            ['script', { type: "text/javascript", src: "/shuttle-recall/banner.js" }]
         ],
 
         themeConfig: {
